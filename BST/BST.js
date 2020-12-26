@@ -136,6 +136,28 @@ class BST {
         }
 
     }
+
+    BFS() {
+        let curr = this.root
+        let list = []
+        let queue = []
+        queue.push(curr)
+
+        while (queue.length) {
+            curr = queue.shift()
+            list.push(curr.value)
+
+            if (curr.left) {
+                queue.push(curr.left)
+            }
+            if (curr.right) {
+                queue.push(curr.right)
+            }
+
+        }
+
+        console.log(list)
+    }
 }
 
 
@@ -148,6 +170,9 @@ myTree.insert(170)
 myTree.insert(1)
 myTree.insert(15)
 traverse(myTree.root)
+myTree.BFS()
+
+//BFS : 9, 4, 20, 1, 6, 15, 170
 
 function traverse(node) {
     const tree = { value: node.value }
