@@ -175,8 +175,21 @@ class BST {
         }
 
         return this.BFSR(queue, list)
+    }
 
 
+    DFS(node, list) {
+        if (node.left) {
+            this.DFS(node.left, list)
+        }
+        //Push after reaching the end
+        list.push(node.value)
+
+        if (node.right) {
+            this.DFS(node.right, list)
+        }
+
+        return list
     }
     //     9
     //  4     20
@@ -195,6 +208,7 @@ myTree.insert(15)
 traverse(myTree.root)
 myTree.BFS()
 console.log(myTree.BFSR([myTree.root], []))
+console.log(myTree.DFS(myTree.root, []))
 
 //BFS : 9, 4, 20, 1, 6, 15, 170
 
