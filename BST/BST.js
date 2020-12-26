@@ -158,6 +158,29 @@ class BST {
 
         console.log(list)
     }
+
+    BFSR(queue, list) {
+        if (!queue.length) {
+            return list
+        }
+
+        let curr = queue.shift()
+        list.push(curr.value)
+
+        if (curr.left) {
+            queue.push(curr.left)
+        }
+        if (curr.right) {
+            queue.push(curr.right)
+        }
+
+        return this.BFSR(queue, list)
+
+
+    }
+    //     9
+    //  4     20
+    //1  6  15  170
 }
 
 
@@ -171,6 +194,7 @@ myTree.insert(1)
 myTree.insert(15)
 traverse(myTree.root)
 myTree.BFS()
+console.log(myTree.BFSR([myTree.root], []))
 
 //BFS : 9, 4, 20, 1, 6, 15, 170
 
